@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drew Simpson - Custom Resume</title>
+<style>
+  :root{
+    --accent:#8d2f2b;
+    --accent-2:#222;
+    --ink:#171717;
+    --muted:#545454;
+    --line:#d8d8d8;
+    --panel:#f3f3f3;
+    --paper:#fff;
+    --font: Arial, Helvetica, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#e9e9e9;color:var(--ink);font-family:var(--font);}
+  .toolbar{position:sticky;top:0;z-index:10;background:#111;color:#fff;padding:10px 14px;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 10px #0003}
+  .toolbar button,.toolbar select{border:1px solid #666;background:#fff;color:#111;border-radius:7px;padding:8px 10px;font-weight:700;cursor:pointer}
+  .toolbar small{opacity:.8;margin-left:6px}
+  .page{width:8.5in;min-height:11in;margin:18px auto;background:var(--paper);box-shadow:0 8px 24px #0003;padding:.44in .48in .38in .48in;position:relative;overflow:hidden}
+  .top{display:grid;grid-template-columns:1.2fr .95fr;gap:18px;border-bottom:3px solid var(--accent);padding-bottom:14px;margin-bottom:13px}
+  h1{font-size:33px;letter-spacing:.06em;margin:0 0 4px;text-transform:uppercase;line-height:1;color:var(--accent-2)}
+  .headline{font-size:14.5px;font-weight:800;color:var(--accent);letter-spacing:.02em;text-transform:uppercase;margin-bottom:7px}
+  .summary{font-size:10.5px;line-height:1.42;color:#232323;max-width:5in}
+  .contact{font-size:9.6px;line-height:1.65;text-align:right;color:#222}
+  .contact span{display:block}
+  .layout{display:grid;grid-template-columns:1.15fr 2fr;gap:17px;align-items:start}
+  section{break-inside:avoid;margin-bottom:12px;position:relative}
+  h2{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:4px;margin:0 0 8px}
+  .item{break-inside:avoid;margin-bottom:9px}
+  .role{font-size:10.7px;font-weight:800;line-height:1.25}
+  .meta{font-size:9.2px;color:var(--muted);font-style:italic;margin:1px 0 3px}
+  ul{margin:4px 0 0 16px;padding:0}
+  li{font-size:9.55px;line-height:1.32;margin-bottom:2px}
+  p{font-size:9.8px;line-height:1.35;margin:0 0 6px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{font-size:8.8px;font-weight:700;border:1px solid var(--accent);color:#fff;background:var(--accent);padding:4px 7px;border-radius:999px;line-height:1}
+  .card{background:var(--panel);padding:9px;border-left:4px solid var(--accent);border-radius:7px}
+  .timeline .item{padding-left:10px;border-left:2px solid var(--line)}
+  .small{font-size:8.8px;color:var(--muted)}
+  [contenteditable="true"]{outline:1px dashed transparent;border-radius:3px}
+  [contenteditable="true"]:hover{outline-color:#aaa;background:#fff8}
+  .controls{display:none;position:absolute;right:0;top:-4px;gap:2px;background:#fff;border:1px solid #ccc;border-radius:7px;padding:2px;box-shadow:0 2px 8px #0002}
+  section:hover .controls,.item:hover>.controls{display:flex}
+  .controls button{font-size:10px;line-height:1;border:0;background:#eee;border-radius:5px;padding:4px 5px;cursor:pointer}
+  .bw{--accent:#111;--accent-2:#111;--panel:#f6f6f6;--line:#bdbdbd}
+  .compact .summary{font-size:10px}.compact li{font-size:9.1px}.compact p{font-size:9.2px}.compact section{margin-bottom:9px}.compact .item{margin-bottom:7px}.compact h1{font-size:30px}.compact .page{padding:.38in .42in .34in}
+  @media print{
+    body{background:#fff}.toolbar{display:none}.page{width:8.5in;height:11in;margin:0;box-shadow:none;page-break-after:always;overflow:hidden}.controls{display:none!important}
+    @page{size:Letter portrait;margin:0}
+  }
+  @media (max-width:900px){.page{width:100%;min-height:auto;margin:0;box-shadow:none}.layout,.top{grid-template-columns:1fr}.contact{text-align:left}}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button onclick="document.body.classList.remove('bw');document.body.classList.remove('compact')">Color</button>
+  <button onclick="document.body.classList.add('bw')">Black & White</button>
+  <button onclick="document.body.classList.toggle('compact')">Compact / Auto-fit</button>
+  <button onclick="addSection()">Add Section</button>
+  <button onclick="window.print()">Print / Save PDF</button>
+  <small>Click any text to edit. Hover sections to move or remove.</small>
+</div>
+<main class="page" id="resume">
+  <header class="top">
+    <div>
+      <h1 contenteditable="true">Drew Simpson</h1>
+      <div class="headline" contenteditable="true">Veteran Operations Leader | Research & AI-Assisted Product Development | Security & Public Service</div>
+      <div class="summary" contenteditable="true">Disciplined Canadian Armed Forces veteran and Western graduate with a cross-disciplinary background spanning operations, security, research, public service, business, communications, and product concept development. Known for calm decision-making, reliable execution, stakeholder communication, and the ability to convert complex information into practical plans. Seeking high-responsibility roles where leadership, analysis, integrity, and adaptability create measurable value.</div>
+    </div>
+    <div class="contact" contenteditable="true">
+      <span>Chatham, Ontario</span>
+      <span>Phone: 548-886-0176</span>
+      <span>Email: drewsimpson-r3search@bell.net</span>
+      <span>LinkedIn / Portfolio: add link</span>
+    </div>
+  </header>
+  <div class="layout" id="sections">
+    <aside>
+      <section class="card"><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">Core Strengths</h2>
+        <div class="chips" contenteditable="true"><span class="chip">Leadership</span><span class="chip">Research</span><span class="chip">Operations</span><span class="chip">Security</span><span class="chip">AI-assisted analysis</span><span class="chip">Project coordination</span><span class="chip">Communication</span><span class="chip">Problem solving</span><span class="chip">Financial discipline</span></div>
+      </section>
+      <section><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">Education & Training</h2>
+        <div class="item" contenteditable="true"><div class="role">Bachelor of Arts, Cross-Disciplinary Studies</div><div class="meta">University of Western Ontario / King's University College | 2011-2020</div></div>
+        <div class="item" contenteditable="true"><div class="role">Business General, Border Services, General Arts & Science, Graphic Design</div><div class="meta">St. Clair College | 2008-2015</div></div>
+        <div class="item" contenteditable="true"><div class="role">DP1 Infantry Trade Qualification; D Straight Truck Training</div><div class="meta">Canadian Forces Battle School; Ontario Truck Driving School</div></div>
+      </section>
+      <section><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">Memberships</h2>
+        <p contenteditable="true"><b>Royal Canadian Legion</b> - active legionnaire, veteran member.</p>
+        <p contenteditable="true"><b>Knights of Columbus</b> - 3rd Degree member.</p>
+        <p contenteditable="true"><b>New Beginnings</b> - member.</p>
+      </section>
+      <section><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">Recognition</h2>
+        <p contenteditable="true">Achieved rank of Corporal, Essex and Kent Scottish Regiment. Chrysler Bursary recipient for academic performance. Independent provincial and municipal candidate experience demonstrating civic leadership and public communication.</p>
+      </section>
+    </aside>
+    <div>
+      <section class="timeline"><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">Professional Experience</h2>
+        <div class="item" contenteditable="true"><div class="role">Founder / Researcher - R3Search Incorporated</div><div class="meta">Chatham, ON | 2023-Present</div><ul><li>Conduct concept research for product, policy, and data-driven ideas using structured analysis and AI-assisted workflows.</li><li>Develop research directions involving criminal, civil, financial, and social statistics; translate findings into practical opportunities.</li><li>Apply disciplined budgeting, goal tracking, and savings strategy to support sustainable business and personal financial decisions.</li></ul></div>
+        <div class="item" contenteditable="true"><div class="role">Infantry Soldier / Corporal - Canadian Armed Forces Reserve, Essex and Kent Scottish Regiment</div><div class="meta">Chatham / Windsor, ON | 2010-2018</div><ul><li>Served in a structured government environment requiring reliability, discipline, physical readiness, confidentiality, and chain-of-command accountability.</li><li>Completed infantry training, weapons handling and maintenance, field exercises, emergency scenarios, and team operations under pressure.</li><li>Progressed to Corporal and Development Progression Level 2; supported leadership, supervision, and mission execution.</li></ul></div>
+        <div class="item" contenteditable="true"><div class="role">Sales & Marketing Associate - Chamberlain Mercury Printing</div><div class="meta">Chatham, ON | 2015</div><ul><li>Supported sales, marketing, customer communication, and print-service coordination.</li><li>Applied design and business knowledge to help clients clarify requirements and move work toward completion.</li></ul></div>
+        <div class="item" contenteditable="true"><div class="role">Campus Tour Guide - St. Clair College Thames Campus Brigade</div><div class="meta">Chatham, ON | 2012-2013</div><ul><li>Represented the campus to prospective students and visitors through clear public-facing communication.</li><li>Answered questions, guided tours, and supported a positive institutional image.</li></ul></div>
+        <div class="item" contenteditable="true"><div class="role">Security Guard - Beclin Security Inc. / Union Gas Corporate Head Office</div><div class="meta">Chatham, ON | 2009-2010</div><ul><li>Maintained site awareness, access control, professionalism, and incident readiness in a corporate environment.</li></ul></div>
+        <div class="item" contenteditable="true"><div class="role">Technical / Design / Customer Service Roles</div><div class="meta">Chatham, ON | 2007-2009</div><ul><li>Minor Culvert Inspector: collected measurements of bridges and culverts for municipal repair planning.</li><li>Assistant Graphic Artist: prepared brochures, stationery, logos, business cards, and illustrations.</li><li>Sport Chek Sales Associate: promoted products, explained options, and supported customer decisions.</li></ul></div>
+      </section>
+      <section><div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div>
+        <h2 contenteditable="true">High-Value Positioning</h2>
+        <p contenteditable="true">Best aligned to operations coordinator, security supervisor, research analyst, public-sector support, project coordinator, business development, customer success, compliance support, emergency management, veteran outreach, or AI-assisted research roles. This version prioritizes leadership, judgment, analysis, adaptability, and public trust rather than listing every historic job equally.</p>
+      </section>
+    </div>
+  </div>
+</main>
+<script>
+function sec(btn){return btn.closest('section,.item')}
+function moveUp(btn){const e=sec(btn); if(e&&e.previousElementSibling)e.parentNode.insertBefore(e,e.previousElementSibling); fit();}
+function moveDown(btn){const e=sec(btn); if(e&&e.nextElementSibling)e.parentNode.insertBefore(e.nextElementSibling,e); fit();}
+function removeBlock(btn){const e=sec(btn); if(confirm('Remove this block?')){e.remove(); fit();}}
+function addSection(){const s=document.createElement('section');s.innerHTML='<div class="controls"><button onclick="moveUp(this)">↑</button><button onclick="moveDown(this)">↓</button><button onclick="removeBlock(this)">×</button></div><h2 contenteditable="true">New Section</h2><p contenteditable="true">Add details here.</p>';document.querySelector('#sections > div').appendChild(s);fit();}
+function fit(){const p=document.querySelector('.page'); if(p.scrollHeight>p.clientHeight) document.body.classList.add('compact');}
+document.addEventListener('input',fit); window.addEventListener('load',fit);
+</script>
+</body>
+</html>
